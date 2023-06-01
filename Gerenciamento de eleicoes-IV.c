@@ -5,7 +5,6 @@ int main()
 {
 	int vencedor = 0, indice_vencedor = 0;
 	int numeroEleitores;
-	int numeroCandidatos;
 	int n_candidato = 0;
 	int i = 0,j = 0;
 	int n_voto = 0;
