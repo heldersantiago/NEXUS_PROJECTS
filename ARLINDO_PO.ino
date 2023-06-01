@@ -1,3 +1,7 @@
+//This is simple project that works in two modes: OFFLINE and ONLINE, in offline we will control the charges using LoRa module
+//In Online mode will use Blynk Server, to control the charges by a website or app in great distances and any SmartPhone or computer
+//There are 4 charges to control, we have an app created in C# to control in its Two modes, we are using the API of Blynk to communicate to
+//its Server
 #include <DHT.h>
 
 #include <Thread.h>
@@ -7,32 +11,32 @@
 #include <BlynkSimpleStream.h>
 #include <StaticThreadController.h>
 
-/* Fill-in information from Blynk Device Info here */
-#define BLYNK_TEMPLATE_NAME "NEXUS"
-#define BLYNK_TEMPLATE_ID "TMPL2SGR_OP1H"
-#define BLYNK_AUTH_TOKEN "93NWr4sYeSdsPOFbc4IBeBLZPBszDS7t"
+/* Fill-in information from Blynk Device Info here  */
+#define BLYNK_TEMPLATE_NAME "NEXUS" // Put here your template name
+#define BLYNK_TEMPLATE_ID "TMPL2SGR_OP1H" //Put her your template ID
+#define BLYNK_AUTH_TOKEN "93NWr4sYeSdsPOFbc4IBeBLZPBszDS7t" //put here your token
 
-
+//Pins to connect the buttons
 #define BTN_1 4
 #define BTN_2 5
 #define BTN_3 6
 #define BTN_4 7
-
+//Pins to connect the charges(We are using LEDs)
 #define LED_1 8
 #define LED_2 9
 #define LED_3 10
 #define LED_4 11
 
-#define sensor_1 A4 //Humidade
-#define sensor_2 A5 //Temperatura
+#define sensor_1 A4 //Humidity
+#define sensor_2 A5 //Temperature
 #define DHT_PIN 12
 
 //CONST VARIABLES
-const unsigned long delayTime = 2000; // Tempo de atraso desejado em milissegundos
-unsigned long previousMillis = 0; // Variável para armazenar o momento inicial do atraso
+const unsigned long delayTime = 2000; // delay in milissecunds
+unsigned long previousMillis = 0; // Variable to store the initial moment of delay
 
 
-//BOOL VARIAVLES
+//BOOL VARIABLES
 bool led1Status = LOW;
 bool led2Status = LOW;
 bool led3Status = LOW;
@@ -54,8 +58,8 @@ DHT dht;
 void LoraRunningBack()
 {
   checkButtons();
-  LoRaRun();
   UpdateData();
+  LoRaRun();
 }
 
 void timerLoraRun()
@@ -146,7 +150,7 @@ void setup()
 
 void loop()
 {
-  //if(Blynk.connected()==false){LoraRun();}
+  //if(Blynk.connected()==false){LoraRun();}//Other way to use Offline and online mode descarting the threads and interrupts usedin this project
   Blynk.run();
   Timer.run();
 }
