@@ -1,2 +1,2 @@
 # NEXUS_PROJECTS
-This a repository where you'll find good embadded projects built in Arduino c/c+ By: neXus
+This a repository where you'll find good embedded projects built in Arduino c/c+ By: neXus
